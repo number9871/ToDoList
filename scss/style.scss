@@ -1,0 +1,125 @@
+:root {
+    --delete-color: #e53935;
+    --transition: .3s;
+}
+
+.container {
+    padding-top: 0;
+}
+
+.ml-20 {
+    margin-right: 40px;
+}
+
+nav {
+    margin: 40px 0 40px;
+}
+
+.socials {
+    display: block;
+    svg {
+        display: block;
+        width: 30px;
+        height: 30px;
+    }
+}
+
+article.article {
+    position: relative;
+    margin: 0 0 20px;
+    padding: 40px 40px;
+    min-height: 160px;
+    
+    .done-btn {
+        width: 19px;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        cursor: pointer;
+        transition: var(--transition);
+        &:hover {
+            svg > path {
+                fill: var(--ins-color);
+            }
+        }
+    }
+    .hover-visible {
+        opacity: 0;
+        transition: var(--transition);
+        svg {
+            display: block;
+            path {
+                transition: var(--transition);
+            }
+        }
+    }
+    .interaction-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        .delete {
+            width: 17px;
+            cursor: pointer;
+            transition: var(--transition);
+            &:hover {
+                svg > path {
+                    fill: var(--delete-color);
+                }
+            }
+        }
+        .edit {
+            width: 19px;
+            cursor: pointer;
+            transition: var(--transition);
+            &:hover {
+                svg > path {
+                    fill: var(--primary);
+                }
+            }
+            
+        }
+    }
+    &:hover {
+        .hover-visible {
+            opacity: 1;
+        }
+    }
+}
+
+.done-task {
+    opacity: .4;
+    overflow: hidden;
+    .done-btn {
+        svg > path {
+            fill: var(--ins-color);
+        }
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 10px;
+        height: 100%;
+        background-color: var(--ins-color);
+    }
+}
+
+textarea {
+    resize: none;
+    height: 160px;
+}
+
+small.redText {
+    color: var(--delete-color);
+}
+
+@media screen and (min-width: 500px) {
+    textarea.modal {
+        width: 50vw;
+        max-width: 100%;
+    }
+}
