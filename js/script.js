@@ -27,15 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		  taskInput = document.querySelector('#taskInput');
 
 	const setLocalStorage = () => {
-		if (tasksDB.tasks.length == 0) {
-			localStorage.clear();
-		} else {
 			localStorage.setItem('tasks', JSON.stringify(tasksDB.tasks));
-		}
 	};
 
 	const getLocalStorage = () => {
-		tasksDB.tasks = JSON.parse(localStorage.getItem('tasks'));
+		if (localStorage.getItem('tasks')) {
+			tasksDB.tasks = JSON.parse(localStorage.getItem('tasks'));
+		}
 	};
 
 	taskSubmitButton.onclick = function() {
